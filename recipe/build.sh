@@ -19,6 +19,7 @@ cmake -LAH -G Ninja ${CMAKE_ARGS} \
     -DOGS_CPU_ARCHITECTURE=OFF \
     -DBUILD_SHARED_LIBS=ON \
     -DCONDA_BUILD=ON \
+    -DOGS_EIGEN_DYNAMIC_SHAPE_MATRICES=ON \
     ..
 
 cmake --build . --target install -j${CPU_COUNT}
