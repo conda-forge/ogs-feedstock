@@ -11,7 +11,7 @@ source:
   sha256: 25ec102dd11b307b743c36053b3df5f12eaf7cb43a15f307c3c04a30b9472b67
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
@@ -31,6 +31,7 @@ requirements:
     - metis
     - nlohmann_json
     - pybind11
+    - python {{ python }}
     - range-v3
     - tclap
     - vtk >=9.3.0
@@ -42,7 +43,7 @@ requirements:
     - libtiff
     - libxml2
     - llvm-openmp  # [osx]
-    - python
+    - python {{ python }}
     - tetgen
     - vtk >=9.3.0
 
