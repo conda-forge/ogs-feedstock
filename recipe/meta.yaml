@@ -31,6 +31,7 @@ requirements:
     - metis
     - nlohmann_json
     - pybind11
+    - python {{ python }}
     - range-v3
     - tclap
     - vtk >=9.3.0
@@ -42,7 +43,7 @@ requirements:
     - libtiff
     - libxml2
     - llvm-openmp  # [osx]
-    - python
+    - python {{ python }}
     - tetgen
     - vtk >=9.3.0
 
