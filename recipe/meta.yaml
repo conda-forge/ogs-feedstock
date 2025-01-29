@@ -11,17 +11,20 @@ source:
   sha256: 25ec102dd11b307b743c36053b3df5f12eaf7cb43a15f307c3c04a30b9472b67
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
-
+    - libgomp # [linux]
+    - llvm-openmp  # [osx]
   host:
     - eigen
     - exprtk
@@ -31,21 +34,14 @@ requirements:
     - metis
     - nlohmann_json
     - pybind11
-    - python {{ python }}
+    - python
     - range-v3
     - tclap
     - vtk >=9.3.0
     - zlib
-
   run:
-    - _openmp_mutex  # [linux]
-    - hdf5
-    - libtiff
-    - libxml2
-    - llvm-openmp  # [osx]
-    - python {{ python }}
     - tetgen
-    - vtk >=9.3.0
+    - python
 
 test:
   commands:
