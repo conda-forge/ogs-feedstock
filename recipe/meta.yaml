@@ -1,17 +1,15 @@
-{% set version = "6.5.3" %}
+{% set version = "6.5.4" %}
 
 package:
   name: ogs
   version: {{ version }}
 
 source:
-  # url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
-  # 6.5.3 with patch for conda build:
-  url: https://gitlab.opengeosys.org/ogs/ogs/-/archive/01b17f73a58ddb6f1c177897f3f12252032f3458/ogs-01b17f73a58ddb6f1c177897f3f12252032f3458.tar.gz
-  sha256: 25ec102dd11b307b743c36053b3df5f12eaf7cb43a15f307c3c04a30b9472b67
+  url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 86d2446a3d9cb8d5323afcfb259a468ea2dd16a1d5922c24cfcbd298e2ec209e
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
 
 requirements:
