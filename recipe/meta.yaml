@@ -9,7 +9,7 @@ source:
   sha256: 86d2446a3d9cb8d5323afcfb259a468ea2dd16a1d5922c24cfcbd298e2ec209e
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
@@ -23,6 +23,7 @@ requirements:
     - ninja
     - libgomp                                # [linux]
     - llvm-openmp                            # [osx]
+    - make                                   # [linux]
   host:
     - eigen
     - exprtk
@@ -37,6 +38,9 @@ requirements:
     - tclap
     - vtk >=9.3.0
     - zlib
+    # requires patch in ogs: 
+    - mfront 4.2                           # [linux]
+    - mgis 2.2                             # [linux]
   run:
     - tetgen
     - python
