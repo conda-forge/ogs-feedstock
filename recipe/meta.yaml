@@ -5,8 +5,9 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 86d2446a3d9cb8d5323afcfb259a468ea2dd16a1d5922c24cfcbd298e2ec209e
+  #url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
+  url: https://gitlab.opengeosys.org/bilke/ogs/-/archive/b20b56e7093954e29261947cfd9a83aef6bb584d/ogs-b20b56e7093954e29261947cfd9a83aef6bb584d.tar.gz
+  #sha256: 86d2446a3d9cb8d5323afcfb259a468ea2dd16a1d5922c24cfcbd298e2ec209e
 
 build:
   number: 2
@@ -38,7 +39,7 @@ requirements:
     - tclap
     - vtk >=9.3.0
     - zlib
-    # requires patch in ogs: 
+    # requires patch in ogs: https://gitlab.opengeosys.org/ogs/ogs/-/merge_requests/5216
     - mfront 4.2                           # [linux]
     - mgis 2.2                             # [linux]
   run:
