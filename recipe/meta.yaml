@@ -12,6 +12,11 @@ source:
 build:
   number: 2
   skip: true  # [win]
+  ignore_run_exports:
+    - libboost-python
+    - exprtk
+    - metis
+    - libzlib
 
 requirements:
   build:
