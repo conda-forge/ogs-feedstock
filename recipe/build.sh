@@ -10,6 +10,9 @@ ENABLE_MFRONT="OFF"
 if [[ "${target_platform}" == linux-* ]]; then
     ENABLE_MFRONT="ON"
     export CONDA_PREFIX=${PREFIX}
+    # Remove -fvisibility-inlines-hidden
+    export CFLAGS="$(echo $CFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
+    export CXXFLAGS="$(echo $CXXFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
 fi
 
 mkdir build
