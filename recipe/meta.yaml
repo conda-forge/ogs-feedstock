@@ -1,16 +1,23 @@
 {% set version = "6.5.4" %}
+{% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
 
 package:
   name: ogs
   version: {{ version }}
 
 source:
-  url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 86d2446a3d9cb8d5323afcfb259a468ea2dd16a1d5922c24cfcbd298e2ec209e
+  #url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
+  url: https://gitlab.opengeosys.org/ogs/ogs/-/archive/{{ commit }}/ogs-{{ commit }}.tar.gz
+  sha256: baf02645c5ff6b0fff20ee1fd5ed2e769ea04e9ebec93b2daf2739ce09c9acc7
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
+  ignore_run_exports:
+    - libboost-python
+    - exprtk
+    - metis
+    - libzlib
 
 requirements:
   build:
@@ -23,6 +30,7 @@ requirements:
     - ninja
     - libgomp                                # [linux]
     - llvm-openmp                            # [osx]
+    - make                                   # [linux]
   host:
     - eigen
     - exprtk
@@ -37,9 +45,13 @@ requirements:
     - tclap
     - vtk >=9.3.0
     - zlib
+    - mfront 4.2                           # [linux]
+    - mgis 2.2                             # [linux]
   run:
     - tetgen
     - python
+    - mfront 4.2                           # [linux]
+    - mgis 2.2                             # [linux]
 
 test:
   commands:

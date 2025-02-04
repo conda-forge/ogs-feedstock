@@ -6,6 +6,15 @@ if [[ "${target_platform}" == osx-* ]]; then
     CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
+ENABLE_MFRONT="OFF"
+if [[ "${target_platform}" == linux-* ]]; then
+    ENABLE_MFRONT="ON"
+    export CONDA_PREFIX=${PREFIX}
+    # Remove -fvisibility-inlines-hidden
+    export CFLAGS="$(echo $CFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
+    export CXXFLAGS="$(echo $CXXFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
+fi
+
 mkdir build
 cd build
 cmake -LAH -G Ninja ${CMAKE_ARGS} \
@@ -21,6 +30,7 @@ cmake -LAH -G Ninja ${CMAKE_ARGS} \
     -DCONDA_BUILD=ON \
     -DOGS_EIGEN_DYNAMIC_SHAPE_MATRICES=ON \
     -DPython_EXECUTABLE=${PYTHON} \
+    -DOGS_USE_MFRONT=${ENABLE_MFRONT} \
     ..
 
 cmake --build . --target install -j${CPU_COUNT}
