@@ -31,6 +31,7 @@ requirements:
     - libgomp                                # [linux]
     - llvm-openmp                            # [osx]
     - make                                   # [linux]
+    - tbb-devel
   host:
     - eigen
     - exprtk
@@ -52,6 +53,7 @@ requirements:
     - python
     - mfront 4.2                           # [linux]
     - mgis 2.2                             # [linux]
+    - tbb
 
 test:
   commands:
