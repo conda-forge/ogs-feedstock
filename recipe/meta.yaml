@@ -1,18 +1,19 @@
-{% set version = "6.5.4" %}
-{% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
+{% set version = "6.5.5" %}
+# {% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
 
 package:
   name: ogs
   version: {{ version }}
 
 source:
-  #url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
-  url: https://gitlab.opengeosys.org/ogs/ogs/-/archive/{{ commit }}/ogs-{{ commit }}.tar.gz
-  sha256: baf02645c5ff6b0fff20ee1fd5ed2e769ea04e9ebec93b2daf2739ce09c9acc7
+  url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
+  # url: https://gitlab.opengeosys.org/ogs/ogs/-/archive/{{ commit }}/ogs-{{ commit }}.tar.gz
+  sha256: 675a58e00b98d29c7ab9076ce0292aa8a728cb0902760e52ae26e53164ef9e1e
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
+  skip: true  # [osx] # re-enable after vtk 9.5.0 conda packages released
   ignore_run_exports:
     - libboost-python
     - exprtk
@@ -31,6 +32,7 @@ requirements:
     - libgomp                                # [linux]
     - llvm-openmp                            # [osx]
     - make                                   # [linux]
+    - tbb-devel
   host:
     - eigen
     - exprtk
@@ -52,6 +54,7 @@ requirements:
     - python
     - mfront 4.2                           # [linux]
     - mgis 2.2                             # [linux]
+    - tbb
 
 test:
   commands:
