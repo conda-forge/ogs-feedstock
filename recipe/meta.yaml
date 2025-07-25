@@ -27,7 +27,7 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake <4.0 # Remove version on 6.5.5
+    - cmake
     - ninja
     - libgomp                                # [linux]
     - llvm-openmp                            # [osx]
