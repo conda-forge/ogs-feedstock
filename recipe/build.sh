@@ -31,6 +31,7 @@ cmake -LAH -G Ninja ${CMAKE_ARGS} \
     -DOGS_EIGEN_DYNAMIC_SHAPE_MATRICES=ON \
     -DPython_EXECUTABLE=${PYTHON} \
     -DOGS_USE_MFRONT=${ENABLE_MFRONT} \
+    -DTBB_ROOT=${PREFIX} \
     ..
 
 cmake --build . --target install -j${CPU_COUNT}
