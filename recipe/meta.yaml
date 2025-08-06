@@ -36,7 +36,8 @@ requirements:
     - eigen
     - exprtk
     - hdf5
-    - libboost-python-devel
+    - libboost-python-devel               # [not osx]
+    - libboost-python-devel >=1.88.0      # [osx]
     - libxml2
     - metis
     - nlohmann_json
@@ -44,7 +45,8 @@ requirements:
     - python
     - range-v3
     - tclap
-    - vtk >=9.3.0
+    - vtk >=9.3.0                          # [not osx]
+    - vtk >=9.5.0                          # [osx]
     - zlib
     - mfront 4.2                           # [linux]
     - mgis 2.2                             # [linux]
