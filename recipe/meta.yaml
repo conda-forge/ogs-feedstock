@@ -11,9 +11,8 @@ source:
   sha256: 675a58e00b98d29c7ab9076ce0292aa8a728cb0902760e52ae26e53164ef9e1e
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
-  skip: true  # [osx] # re-enable after vtk 9.5.0 conda packages released
   ignore_run_exports:
     - libboost-python
     - exprtk
@@ -37,7 +36,8 @@ requirements:
     - eigen
     - exprtk
     - hdf5
-    - libboost-python-devel
+    - libboost-python-devel               # [not osx]
+    - libboost-python-devel >=1.88.0      # [osx]
     - libxml2
     - metis
     - nlohmann_json
@@ -45,7 +45,8 @@ requirements:
     - python
     - range-v3
     - tclap
-    - vtk >=9.3.0
+    - vtk >=9.3.0                          # [not osx]
+    - vtk >=9.5.0                          # [osx]
     - zlib
     - mfront 4.2                           # [linux]
     - mgis 2.2                             # [linux]
