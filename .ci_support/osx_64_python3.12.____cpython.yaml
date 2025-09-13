@@ -20,8 +20,6 @@ cxx_compiler_version:
 - '19'
 hdf5:
 - 1.14.6
-libboost_python_devel:
-- '1.86'
 libxml2:
 - '2.13'
 llvm_openmp:
