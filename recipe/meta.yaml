@@ -45,7 +45,7 @@ requirements:
     - pybind11
     - python
     - range-v3
-    - tclap
+    - dtk::tclap                           # for 1.4rc
     - vtk >=9.3.0                          # [not osx]
     - vtk >=9.5.0                          # [osx]
     - zlib
