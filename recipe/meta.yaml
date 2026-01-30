@@ -1,4 +1,5 @@
-{% set version = "6.5.5" %}
+{% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
+{% set version = "6.5.7" %}
 # {% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
 
 package:
@@ -8,10 +9,10 @@ package:
 source:
   url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
   # url: https://gitlab.opengeosys.org/ogs/ogs/-/archive/{{ commit }}/ogs-{{ commit }}.tar.gz
-  sha256: 675a58e00b98d29c7ab9076ce0292aa8a728cb0902760e52ae26e53164ef9e1e
+  sha256: 661584ac72710c96bec2c394f14a4828e18a6e6c7a003ed25a0d6fbbc53ea047
 
 build:
-  number: 3
+  number: 0
   skip: true  # [win]
   ignore_run_exports:
     - libboost-python
