@@ -37,8 +37,7 @@ requirements:
     - eigen
     - exprtk
     - hdf5
-    - libboost-python-devel               # [not osx]
-    - libboost-python-devel >=1.88.0      # [osx]
+    - libboost-python-devel
     - libxml2
     - metis
     - nlohmann_json
@@ -46,8 +45,7 @@ requirements:
     - python
     - range-v3
     # - tclap >=1.4.0rc2  # downloaded in build.sh
-    - vtk >=9.3.0                          # [not osx]
-    - vtk >=9.5.0                          # [osx]
+    - vtk >=9.3.0
     - zlib
     - mfront 4.2                           # [linux]
     - mgis 2.2                             # [linux]
@@ -57,6 +55,8 @@ requirements:
     - mfront 4.2                           # [linux]
     - mgis 2.2                             # [linux]
     - tbb
+    # Hidden OgsXdmfCore dependency?
+    - libtiff
 
 test:
   commands:
