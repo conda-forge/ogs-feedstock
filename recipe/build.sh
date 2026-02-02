@@ -15,11 +15,16 @@ if [[ "${target_platform}" == linux-* ]]; then
     export CXXFLAGS="$(echo $CXXFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
 fi
 
+# Download and extract tclap
+curl -sL -O https://github.com/DAarno/tclap/archive/1.4.0-rc2.tar.gz
+tar -xzf 1.4.0-rc2.tar.gz
+rm 1.4.0-rc2.tar.gz
+
 mkdir build
 cd build
 cmake -LAH -G Ninja ${CMAKE_ARGS} \
     -DCMAKE_BUILD_TYPE:STRING=Release \
-    -DCMAKE_PREFIX_PATH=${PREFIX} \
+    -DCMAKE_PREFIX_PATH="${PREFIX};${PWD}/../tclap-1.4.0-rc2" \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DCMAKE_INSTALL_RPATH=${PREFIX}/lib \
     -DOGS_BUILD_TESTING=OFF \
