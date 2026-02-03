@@ -20,6 +20,8 @@ cxx_compiler_version:
 - '19'
 hdf5:
 - 1.14.6
+libboost_python_devel:
+- '1.86'
 libxml2:
 - '2.13'
 llvm_openmp:
@@ -37,7 +39,7 @@ python:
 target_platform:
 - osx-64
 tbb_devel:
-- '2021'
+- '2022'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

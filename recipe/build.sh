@@ -13,13 +13,23 @@ if [[ "${target_platform}" == linux-* ]]; then
     # Remove -fvisibility-inlines-hidden
     export CFLAGS="$(echo $CFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
     export CXXFLAGS="$(echo $CXXFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
+    sed -i 's/"vtk"[[:space:]]*:[[:space:]]*"[^"]*"/"vtk": "9.3.0"/' web/data/versions.json
+    # Free some disk space, otherwise runs out of space
+    rm -rf Tests/Data web/content
 fi
+
+# Download and extract tclap
+curl -sL -O https://github.com/DAarno/tclap/archive/1.4.0-rc2.tar.gz
+tar -xzf 1.4.0-rc2.tar.gz
+rm 1.4.0-rc2.tar.gz
+ls tclap-1.4.0-rc2/include/tclap
 
 mkdir build
 cd build
 cmake -LAH -G Ninja ${CMAKE_ARGS} \
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DCMAKE_PREFIX_PATH=${PREFIX} \
+    -D_tclap_include="${PWD}/../tclap-1.4.0-rc2/include/tclap" \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DCMAKE_INSTALL_RPATH=${PREFIX}/lib \
     -DOGS_BUILD_TESTING=OFF \
@@ -35,4 +45,12 @@ cmake -LAH -G Ninja ${CMAKE_ARGS} \
     ..
 
 cmake --build . --target install -j${CPU_COUNT}
+
+if [[ "${target_platform}" == linux-* ]]; then
+    # Free some disk space, otherwise runs out of space
+    mv third_party_licenses.txt ..
+    rm -rf *
+    mv ../third_party_licenses.txt .
+    rm -rf ../tclap-1.4.0-rc2/include/tclap
+fi
 
