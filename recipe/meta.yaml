@@ -12,7 +12,7 @@ source:
   sha256: 661584ac72710c96bec2c394f14a4828e18a6e6c7a003ed25a0d6fbbc53ea047
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   ignore_run_exports:
     - libboost-python
