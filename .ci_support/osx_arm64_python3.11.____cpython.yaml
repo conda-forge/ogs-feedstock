@@ -23,7 +23,7 @@ hdf5:
 libboost_python_devel:
 - '1.86'
 libxml2:
-- '2.13'
+- '2.14'
 llvm_openmp:
 - '19'
 macos_machine:
