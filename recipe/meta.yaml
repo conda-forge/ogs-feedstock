@@ -73,7 +73,7 @@ about:
   license_file:
     - LICENSE.txt
     - scripts/cmake/json-cmake/LICENSE
-    - build/third_party_licenses.txt
+    - third_party_licenses.txt
   doc_url: https://www.opengeosys.org/docs
   dev_url: https://gitlab.opengeosys.org/ogs/ogs
 
