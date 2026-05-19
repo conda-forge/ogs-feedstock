@@ -8,7 +8,7 @@ fi
 
 ENABLE_MFRONT="OFF"
 if [[ "${target_platform}" == linux-* ]]; then
-    ENABLE_MFRONT="ON"
+    MFRONT_ARGS="-DOGS_USE_MFRONT=ON -DTFELMath_DIR=${PREFIX}/share/tfel/cmake -DTFELMFrontDatabase_DIR=${PREFIX}/share/tfel/cmake"
     export CONDA_PREFIX=${PREFIX}
     # Remove -fvisibility-inlines-hidden
     export CFLAGS="$(echo $CFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
@@ -24,12 +24,12 @@ tar -xzf 1.4.0-rc2.tar.gz
 rm 1.4.0-rc2.tar.gz
 ls tclap-1.4.0-rc2/include/tclap
 
-mkdir build
-cd build
+mkdir ../build
+cd ../build
 cmake -LAH -G Ninja ${CMAKE_ARGS} \
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DCMAKE_PREFIX_PATH=${PREFIX} \
-    -D_tclap_include="${PWD}/../tclap-1.4.0-rc2/include/tclap" \
+    -D_tclap_include="${PWD}/../work/tclap-1.4.0-rc2/include/tclap" \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DCMAKE_INSTALL_RPATH=${PREFIX}/lib \
     -DOGS_BUILD_TESTING=OFF \
@@ -40,17 +40,16 @@ cmake -LAH -G Ninja ${CMAKE_ARGS} \
     -DCONDA_BUILD=ON \
     -DOGS_EIGEN_DYNAMIC_SHAPE_MATRICES=ON \
     -DPython_EXECUTABLE=${PYTHON} \
-    -DOGS_USE_MFRONT=${ENABLE_MFRONT} \
+    ${MFRONT_ARGS} \
     -DTBB_ROOT=${PREFIX} \
-    ..
+    ../work
 
 cmake --build . --target install -j${CPU_COUNT}
 
+cp third_party_licenses.txt ../work
+
 if [[ "${target_platform}" == linux-* ]]; then
     # Free some disk space, otherwise runs out of space
-    mv third_party_licenses.txt ..
     rm -rf *
-    mv ../third_party_licenses.txt .
-    rm -rf ../tclap-1.4.0-rc2/include/tclap
+    rm -rf ../work/tclap-1.4.0-rc2/include/tclap
 fi
-
