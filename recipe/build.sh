@@ -8,7 +8,7 @@ fi
 
 ENABLE_MFRONT="OFF"
 if [[ "${target_platform}" == linux-* ]]; then
-    ENABLE_MFRONT="ON"
+    MFRONT_ARGS="-DOGS_USE_MFRONT=ON -DTFELMath_DIR=${PREFIX}/share/tfel/cmake -DTFELMFrontDatabase_DIR=${PREFIX}/share/tfel/cmake"
     export CONDA_PREFIX=${PREFIX}
     # Remove -fvisibility-inlines-hidden
     export CFLAGS="$(echo $CFLAGS | sed 's/-fvisibility-inlines-hidden//g')"
@@ -40,7 +40,7 @@ cmake -LAH -G Ninja ${CMAKE_ARGS} \
     -DCONDA_BUILD=ON \
     -DOGS_EIGEN_DYNAMIC_SHAPE_MATRICES=ON \
     -DPython_EXECUTABLE=${PYTHON} \
-    -DOGS_USE_MFRONT=${ENABLE_MFRONT} \
+    ${MFRONT_ARGS} \
     -DTBB_ROOT=${PREFIX} \
     ../work
 

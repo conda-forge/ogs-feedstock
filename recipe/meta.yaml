@@ -46,13 +46,13 @@ requirements:
     # - tclap >=1.4.0rc2  # downloaded in build.sh
     - vtk >=9.3.0
     - zlib
-    - mfront 4.2                           # [linux]
-    - mgis 2.2                             # [linux]
+    - mfront 5.1                           # [linux]
+    - mgis 3.1                             # [linux]
   run:
     - tetgen
     - python
-    - mfront 4.2                           # [linux]
-    - mgis 2.2                             # [linux]
+    - mfront 5.1                           # [linux]
+    - mgis 3.1                             # [linux]
     - tbb
     # Hidden OgsXdmfCore dependency?
     - libtiff
@@ -67,7 +67,7 @@ about:
   description: |
     OpenGeoSys (OGS) is a scientific open source project for the development
     of numerical methods for the simulation of thermo-hydro-mechanical-
-    chemical (THMC) processes in porous and fractured media. 
+    chemical (THMC) processes in porous and fractured media.
   license: BSD-3-Clause
   license_family: BSD
   license_file:
