@@ -1,4 +1,3 @@
-{% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
 {% set version = "6.5.8" %}
 # {% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
 
@@ -9,7 +8,7 @@ package:
 source:
   url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
   # url: https://gitlab.opengeosys.org/ogs/ogs/-/archive/{{ commit }}/ogs-{{ commit }}.tar.gz
-  sha256: d2f310aef3373591a5842437ae14e9051e43593189b812b5c0cf04410f6de89c
+  sha256: f4db3a64abb7832edca46f54d7d5917c9f389be07c137fc92df749d8a44688de
 
 build:
   number: 0
