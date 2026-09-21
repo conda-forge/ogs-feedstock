@@ -1,4 +1,5 @@
-{% set version = "6.5.8" %}
+{% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
+{% set version = "6.5.9" %}
 # {% set commit = "3814f0097ca199d43ade2e25654c37abab0f7a9b" %}
 
 package:
@@ -8,10 +9,10 @@ package:
 source:
   url: https://github.com/ufz/ogs/archive/refs/tags/{{ version }}.tar.gz
   # url: https://gitlab.opengeosys.org/ogs/ogs/-/archive/{{ commit }}/ogs-{{ commit }}.tar.gz
-  sha256: f4db3a64abb7832edca46f54d7d5917c9f389be07c137fc92df749d8a44688de
+  sha256: ab7a369066359ee5742c76077fb226ec51501ba1ce69a32f17ca5523f536b53a
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
   ignore_run_exports:
     - libboost-python
@@ -52,7 +53,7 @@ requirements:
     - tetgen
     - python
     # Python 3.14 no longer propagates this shared library as a direct run requirement.
-    - libpython  # [py>=314]
+    - libpython  # [not win]
     - mfront 5.1                           # [linux]
     - mgis 3.1                             # [linux]
     - tbb
